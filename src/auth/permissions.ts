@@ -47,10 +47,13 @@ const ADMIN_PERMS: Permission[] = [
 const USER_PERMS: Permission[] = [
   'task.create',
   'task.edit',
+  'task.delete',
   'meeting.create',
   'meeting.edit',
+  'meeting.delete',
   'project.create',
   'project.edit',
+  'project.delete',
   'analytics.view',
   'reports.view',
   'report.export',
@@ -58,8 +61,9 @@ const USER_PERMS: Permission[] = [
   'pdf.export',
   'print',
   'settings.view',
+  'settings.resetData',
   'settings.backup',
-];
+  'settings.restore',
 
 const MATRIX: Record<UserRole, Permission[]> = {
   'مدير': ADMIN_PERMS,
