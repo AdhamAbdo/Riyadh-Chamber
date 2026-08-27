@@ -83,7 +83,7 @@ export function Login({ onLogin, rememberDefault }: LoginProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="input pl-10"
-                  placeholder="••••••••"
+                  placeholder=""
                   dir="ltr"
                   autoComplete="current-password"
                 />
