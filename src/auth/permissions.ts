@@ -1,8 +1,7 @@
-```typescript
 import type { UserRole, PageKey } from '@/types';
 
 // ============================================================
-// Permission Matrix
+// Permission Types
 // ============================================================
 
 export type Permission =
@@ -28,10 +27,10 @@ export type Permission =
 
 
 // ============================================================
-// BOTH ROLES HAVE THE SAME PERMISSIONS
+// ADMIN PERMISSIONS
 // ============================================================
 
-const ALL_PERMS: Permission[] = [
+const ADMIN_PERMS: Permission[] = [
   'task.create',
   'task.edit',
   'task.delete',
@@ -61,12 +60,39 @@ const ALL_PERMS: Permission[] = [
 
 
 // ============================================================
-// ROLE MATRIX
+// USER PERMISSIONS
+// ============================================================
+
+const USER_PERMS: Permission[] = [
+  'task.create',
+  'task.edit',
+
+  'meeting.create',
+  'meeting.edit',
+
+  'project.create',
+  'project.edit',
+
+  'analytics.view',
+
+  'reports.view',
+  'report.export',
+
+  'excel.export',
+  'pdf.export',
+  'print',
+
+  'settings.view',
+];
+
+
+// ============================================================
+// ROLE → PERMISSIONS MATRIX
 // ============================================================
 
 const MATRIX: Record<UserRole, Permission[]> = {
-  'مدير': ALL_PERMS,
-  'مستخدم': ALL_PERMS,
+  'مدير': ADMIN_PERMS,
+  'مستخدم': USER_PERMS,
 };
 
 
@@ -97,4 +123,3 @@ export const PAGE_ACCESS: Record<PageKey, UserRole[]> = {
   reports: ['مدير', 'مستخدم'],
   settings: ['مدير', 'مستخدم'],
 };
-```
