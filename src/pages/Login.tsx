@@ -66,7 +66,7 @@ export function Login({ onLogin, rememberDefault }: LoginProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="input"
-                placeholder="admin@riyadhchamber.local"
+                placeholder=""
                 dir="ltr"
                 autoComplete="username"
               />
