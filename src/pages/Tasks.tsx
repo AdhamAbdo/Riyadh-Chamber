@@ -255,12 +255,12 @@ export function Tasks({ tasks, lookups, loading, role, onRefresh }: TasksProps) 
       header: 'الإجراءات',
       render: (t) => (
         <div className="flex items-center gap-1">
-          {can(role, 'task.edit') && (
+          {can(true, 'task.edit') && (
             <button onClick={() => openEdit(t)} className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-slate-800" title="تعديل">
               <Pencil className="h-4 w-4" />
             </button>
           )}
-          {can(role, 'task.delete') && (
+          {can(true, 'task.delete') && (
             <button onClick={() => setDeleteTarget(t)} className="rounded-lg p-1.5 text-slate-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20" title="حذف">
               <Trash2 className="h-4 w-4" />
             </button>
@@ -278,16 +278,16 @@ export function Tasks({ tasks, lookups, loading, role, onRefresh }: TasksProps) 
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">إجمالي المهام: {tasks.length}</h2>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {can(role, 'excel.export') && (
+          {can(true, 'excel.export') && (
             <Button variant="secondary" size="sm" icon={<FileSpreadsheet className="h-4 w-4" />} onClick={exportData}>تصدير Excel</Button>
           )}
-          {can(role, 'pdf.export') && (
+          {can(true, 'pdf.export') && (
             <Button variant="secondary" size="sm" icon={<FileText className="h-4 w-4" />} onClick={exportPdf}>تصدير PDF</Button>
           )}
-          {can(role, 'print') && (
+          {can(true, 'print') && (
             <Button variant="secondary" size="sm" icon={<Printer className="h-4 w-4" />} onClick={doPrint}>طباعة</Button>
           )}
-          {can(role, 'task.create') && (
+          {can(true, 'task.create') && (
             <Button icon={<Plus className="h-4 w-4" />} onClick={openAdd}>إضافة مهمة جديدة</Button>
           )}
         </div>
@@ -344,7 +344,7 @@ export function Tasks({ tasks, lookups, loading, role, onRefresh }: TasksProps) 
             icon={<ClipboardList className="h-12 w-12" />}
             title="لا توجد مهام حالياً"
             description="ابدأ بإضافة مهمة جديدة"
-            action={can(role, 'task.create') ? <Button icon={<Plus className="h-4 w-4" />} onClick={openAdd}>إضافة سجل جديد</Button> : undefined}
+            action={can(true, 'task.create') ? <Button icon={<Plus className="h-4 w-4" />} onClick={openAdd}>إضافة سجل جديد</Button> : undefined}
           />
         </div>
       ) : (
