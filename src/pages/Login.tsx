@@ -114,12 +114,12 @@ export function Login({ onLogin, rememberDefault }: LoginProps) {
             </button>
           </form>
 
-          {/* Dev hint */}
+          {/* Dev hint 
           <div className="border-t border-slate-100 px-6 py-4 dark:border-slate-800">
             <p className="text-center text-xs text-slate-400 dark:text-slate-500">
               بيانات تجريبية: admin@riyadhchamber.local / Admin@12345
             </p>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>
