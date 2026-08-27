@@ -66,12 +66,15 @@ const ADMIN_PERMS: Permission[] = [
 const USER_PERMS: Permission[] = [
   'task.create',
   'task.edit',
+  'task.delete',
 
   'meeting.create',
   'meeting.edit',
+  'meeting.delete',
 
   'project.create',
   'project.edit',
+  'project.delete',
 
   'analytics.view',
 
@@ -83,6 +86,9 @@ const USER_PERMS: Permission[] = [
   'print',
 
   'settings.view',
+  'settings.resetData',
+  'settings.backup',
+  'settings.restore',
 ];
 
 
