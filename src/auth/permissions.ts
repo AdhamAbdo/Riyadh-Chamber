@@ -1,6 +1,10 @@
+```typescript
 import type { UserRole, PageKey } from '@/types';
 
-// Centralized permission matrix. Edit here to change what each role can do.
+// ============================================================
+// Permission Matrix
+// ============================================================
+
 export type Permission =
   | 'task.create'
   | 'task.edit'
@@ -22,61 +26,68 @@ export type Permission =
   | 'settings.backup'
   | 'settings.restore';
 
-const ADMIN_PERMS: Permission[] = [
+
+// ============================================================
+// BOTH ROLES HAVE THE SAME PERMISSIONS
+// ============================================================
+
+const ALL_PERMS: Permission[] = [
   'task.create',
   'task.edit',
   'task.delete',
+
   'meeting.create',
   'meeting.edit',
   'meeting.delete',
+
   'project.create',
   'project.edit',
   'project.delete',
+
   'analytics.view',
+
   'reports.view',
   'report.export',
+
   'excel.export',
   'pdf.export',
   'print',
+
   'settings.view',
   'settings.resetData',
   'settings.backup',
   'settings.restore',
 ];
 
-const USER_PERMS: Permission[] = [
-  'task.create',
-  'task.edit',
-  'task.delete',
-  'meeting.create',
-  'meeting.edit',
-  'meeting.delete',
-  'project.create',
-  'project.edit',
-  'project.delete',
-  'analytics.view',
-  'reports.view',
-  'report.export',
-  'excel.export',
-  'pdf.export',
-  'print',
-  'settings.view',
-  'settings.resetData',
-  'settings.backup',
-  'settings.restore',
+
+// ============================================================
+// ROLE MATRIX
+// ============================================================
 
 const MATRIX: Record<UserRole, Permission[]> = {
-  'مدير': ADMIN_PERMS,
-  'مستخدم': USER_PERMS,
+  'مدير': ALL_PERMS,
+  'مستخدم': ALL_PERMS,
 };
 
-export function can(role: UserRole | undefined, perm: Permission): boolean {
+
+// ============================================================
+// PERMISSION CHECK
+// ============================================================
+
+export function can(
+  role: UserRole | undefined,
+  perm: Permission
+): boolean {
   if (!role) return false;
+
   return MATRIX[role]?.includes(perm) ?? false;
 }
 
-// Pages accessible to each role. Both roles can access all pages; the
-// difference is in actions (delete, reset) gated by `can()`.
+
+// ============================================================
+// PAGE ACCESS
+// ============================================================
+
 export const PAGE_ACCESS: Record<PageKey, UserRole[]> = {
   dashboard: ['مدير', 'مستخدم'],
   tasks: ['مدير', 'مستخدم'],
@@ -86,3 +97,4 @@ export const PAGE_ACCESS: Record<PageKey, UserRole[]> = {
   reports: ['مدير', 'مستخدم'],
   settings: ['مدير', 'مستخدم'],
 };
+```
